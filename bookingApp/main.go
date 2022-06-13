@@ -6,15 +6,17 @@ import (
 	"time"
 )
 
-//Defining variables
-var conferenceName = "Go Conference"
+// Defining variables
+var (
+	conferenceName = "Go Conference"
+	remainingTickets = 50
+	// wg Waits for the launched goroutine to finish
+	wg = sync.WaitGroup{}
+	// bookings creating an empty list of userData struct
+	bookings = make([]UserData, 0)
+)
 
 const conferenceTickets = 50
-
-var remainingTickets = 50
-
-//creating an empty list of userData struct
-var bookings = make([]UserData, 0)
 
 type UserData struct {
 	firstName       string
@@ -22,9 +24,6 @@ type UserData struct {
 	email           string
 	numberOfTickets int
 }
-
-// Waits for the launched goroutine to finish
-var wg = sync.WaitGroup{}
 
 func main() {
 	// Calling the greetUser function
